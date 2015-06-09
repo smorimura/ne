@@ -1,0 +1,44 @@
+#
+#	Makefile for ne
+#
+
+@SET_MAKE@
+
+PROG = ne
+VER  = @VERSION@
+SUBDIRS = doc etc lib old_doc src
+
+TARS= Makefile.in configure configure.in install-sh mkinstalldirs \
+	README.jp BUGS.jp INSTALL.jp HISTORY.jp COPYING COPYING.jp TODO.jp \
+	CHANGES.jp
+
+all:
+	@set -e; for i in $(SUBDIRS); \
+	do (cd $$i ; $(MAKE) all ); done
+
+depend:
+	@set -e; for i in $(SUBDIRS); \
+	do (cd $$i ; $(MAKE) depend ); done
+
+clean:
+	@set -e; for i in $(SUBDIRS); \
+	do (cd $$i ; $(MAKE) clean ); done
+
+distclean:
+	@set -e; for i in $(SUBDIRS); \
+	do (cd $$i ; $(MAKE) distclean ); done
+	rm -f Makefile config.cache config.log config.status
+
+install:
+	@set -e; for i in $(SUBDIRS); \
+	do (cd $$i ; $(MAKE) install ); done;
+
+
+tar:
+	@cp /dev/null lists.tmp
+	@set -e; for i in $(SUBDIRS); \
+	do (cd $$i ; $(MAKE) ARC=ne/$$i/ tar ); done
+	@echo $(TARS) | tr [:space:] "\n" | sed -e s:^:ne/: | sort >> lists.tmp
+	(cd .. ; tar zcvf ne-$(VER).tar.gz `cat ne/lists.tmp` )
+	@rm lists.tmp
+

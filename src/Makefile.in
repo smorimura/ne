@@ -1,0 +1,168 @@
+#
+#	Makefile for ne
+#
+
+PROG = ne
+SED = sed
+
+VER=@VERSION@
+
+PREFIX=@prefix@
+
+OPTS = -DSYSCONFDIR=\"@sysconfdir@/ne\" -DPROG=${PROG} -DVER=\"@VERSION@\"
+mkinstalldirs = /bin/sh $(top_srcdir)/mkinstalldirs
+
+CC = @CC@
+DEFS = @DEFS@
+LIBS = -lele @LIBS@
+# CFLAGS= @CFLAGS@
+
+prefix = @prefix@
+top_srcdir = @top_srcdir@
+INSTALL = @INSTALL@
+INSTALL_DATA = @INSTALL_DATA@
+#INSTALL_PROGRAM = @INSTALL_PROGRAM@ -s
+INSTALL_PROGRAM = @INSTALL_PROGRAM@
+bindir = $(prefix)/@bindir@
+mandir = @mandir@
+
+
+SRCS = block.c crt.c cursor.c disp.c file.c filer.c \
+	hearderr.c input.c iskanji.c keyf.c line.c \
+	lineedit.c list.c menu.c profile.c \
+	search.c setopt.c \
+	$(PROG).c
+OBJS = $(SRCS:.c=.o) sh_shells.o
+
+TARS = $(SRCS) Makefile.in config.h.in ne.1.in ne_en.1 00_todo 00_next \
+	ed.h disp.h filer.h function.h kanji.h sh.h sh_make.c
+
+
+all: $(PROG)
+
+$(PROG): $(OBJS) ../lib/libele.a
+	$(CC) -L../lib -o $@ $(OBJS) $(LIBS)
+
+.c.o:
+	@echo $(CC) $(CFLAGS) -c $<
+	@$(CC) $(CFLAGS) $(OPTS) -c $<
+
+sh_defs.h sh_shells.c: sh_make function.h
+	./sh_make >sh_defs.h
+
+sh_make: sh_make.c
+	$(CC) $(CFLAGS) -o $@ $@.c
+
+#
+
+clean:
+	rm -f $(OBJS) sh_shells.c sh_defs.h $(PROG)
+
+distclean:
+	rm -f $(OBJS) sh_shells.c sh_defs.h $(PROG) \
+	      Makefile config.h ne.1
+
+install: $(PROG)
+	@$(mkinstalldirs) $(bindir)
+	$(INSTALL_PROGRAM) $(PROG) $(bindir)/$(PROG)
+
+	@if [ -d $(mandir)/$(LANG)/man1 ]; then \
+		$(INSTALL_DATA) $(PROG).1 $(mandir)/$(LANG)/man1/$(PROG).1; \
+		echo $(INSTALL_DATA) $(PROG).1 $(mandir)/$(LANG)/man1/$(PROG).1; \
+	elif [ -d $(mandir)/ja_JP.euc/man1 ]; then \
+		$(INSTALL_DATA) $(PROG).1 $(mandir)/ja_JP.euc/man1/$(PROG).1; \
+		echo $(INSTALL_DATA) $(PROG).1 $(mandir)/ja_JP.euc/man1/$(PROG).1; \
+	elif [ -d $(mandir)/ja_JP.EUC/man1 ]; then \
+		$(INSTALL_DATA) $(PROG).1 $(mandir)/ja_JP.EUC/man1/$(PROG).1; \
+		echo $(INSTALL_DATA) $(PROG).1 $(mandir)/ja_JP.EUC/man1/$(PROG).1; \
+	elif [ -d $(mandir)/ja_JP.ujis/man1 ]; then \
+		$(INSTALL_DATA) $(PROG).1 $(mandir)/ja_JP.ujis/man1/$(PROG).1; \
+		echo $(INSTALL_DATA) $(PROG).1 $(mandir)/ja_JP.ujis/man1/$(PROG).1; \
+	elif [ -d $(mandir)/ja/man1 ]; then \
+		$(INSTALL_DATA) $(PROG).1 $(mandir)/ja/man1/$(PROG).1; \
+		echo $(INSTALL_DATA) $(PROG).1 $(mandir)/ja/man1/$(PROG).1; \
+	else \
+		$(mkinstalldirs) $(mandir)/man1; \
+		$(INSTALL_DATA) $(PROG).1 $(mandir)/man1/$(PROG).1; \
+		echo $(INSTALL_DATA) $(PROG).1 $(mandir)/man1/$(PROG).1; \
+	fi
+
+
+#
+#
+#
+
+tar: $(TARS)
+	@echo $(TARS) | tr [:space:] "\n" | sed -e s:^:$(ARC): | sort >> ../lists.tmp
+
+depend: $(SRCS)
+	cp Makefile.in Makefile.tmp
+	mv Makefile.in Makefile.in.bak
+	makedepend -s "# DO NOT DELETE THIS LINE -- make depend depends on it."\
+		-f Makefile.tmp -- $(CFLAGS) -- $(SRCS)
+	rm -f Makefile.tmp.bak
+	$(SED) -e "/^# DO NOT DELETE THIS LINE/,$$$$d" Makefile.in.bak > Makefile.in
+	echo "# DO NOT DELETE THIS LINE -- make depend depends on it." >> Makefile.in
+	$(SED) -e "1,/^# DO NOT DELETE THIS LINE/d" \
+		-e "s/[\t ]\/[^ ]*//g"\
+		-e "/: *$$/d" Makefile.tmp >> Makefile.in
+	rm -f Makefile.in.bak Makefile.tmp
+
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.
+
+block.o: ed.h config.h
+block.o: ../lib/generic.h ../lib/hash.h kanji.h
+block.o: ../lib/term.h disp.h
+crt.o: ed.h config.h
+crt.o: ../lib/generic.h ../lib/hash.h kanji.h
+crt.o: ../lib/term.h disp.h
+cursor.o: ed.h config.h
+cursor.o: ../lib/generic.h ../lib/hash.h kanji.h
+cursor.o: ../lib/term.h disp.h function.h
+disp.o: ed.h config.h
+disp.o: ../lib/generic.h ../lib/hash.h kanji.h
+disp.o: ../lib/term.h disp.h
+file.o: ed.h config.h
+file.o: ../lib/generic.h ../lib/hash.h kanji.h
+file.o: ../lib/term.h disp.h function.h
+filer.o: filer.h ed.h config.h
+filer.o: ../lib/generic.h ../lib/hash.h kanji.h
+filer.o: ../lib/term.h disp.h
+filer.o: sh.h sh_defs.h function.h
+hearderr.o: ed.h config.h
+hearderr.o: ../lib/generic.h ../lib/hash.h kanji.h
+hearderr.o: ../lib/term.h disp.h
+input.o: ed.h config.h
+input.o: ../lib/generic.h ../lib/hash.h kanji.h
+input.o: ../lib/term.h disp.h
+iskanji.o: ed.h config.h
+iskanji.o: ../lib/generic.h ../lib/hash.h kanji.h
+iskanji.o: ../lib/term.h disp.h
+keyf.o: ed.h config.h
+keyf.o: ../lib/generic.h ../lib/hash.h kanji.h
+keyf.o: ../lib/term.h disp.h sh.h sh_defs.h function.h
+line.o: ed.h config.h
+line.o: ../lib/generic.h ../lib/hash.h kanji.h
+line.o: ../lib/term.h disp.h sh.h sh_defs.h function.h
+lineedit.o: ed.h config.h
+lineedit.o: ../lib/generic.h ../lib/hash.h kanji.h
+lineedit.o: ../lib/term.h disp.h sh.h sh_defs.h function.h
+list.o: ed.h config.h
+list.o: ../lib/generic.h ../lib/hash.h kanji.h
+list.o: ../lib/term.h disp.h
+menu.o: ed.h config.h
+menu.o: ../lib/generic.h ../lib/hash.h kanji.h
+menu.o: ../lib/term.h disp.h sh.h sh_defs.h function.h
+profile.o: ed.h config.h
+profile.o: ../lib/generic.h ../lib/hash.h kanji.h
+profile.o: ../lib/term.h disp.h
+search.o: ed.h config.h
+search.o: ../lib/generic.h ../lib/hash.h kanji.h
+search.o: ../lib/term.h disp.h ../lib/regexp.h
+setopt.o: ed.h config.h
+setopt.o: ../lib/generic.h ../lib/hash.h kanji.h
+setopt.o: ../lib/term.h disp.h sh.h sh_defs.h function.h
+ne.o: ed.h config.h
+ne.o: ../lib/generic.h
+ne.o: ../lib/hash.h kanji.h ../lib/term.h disp.h sh.h sh_defs.h function.h

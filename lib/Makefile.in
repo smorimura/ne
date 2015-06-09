@@ -1,0 +1,81 @@
+#
+# Makefile for  ele's library
+#
+
+TARGET = libele.a
+CC = @CC@
+# CFLAGS= @CFLAGS@
+DEFS = @DEFS@
+LIBS = @LIBS@
+SED = sed
+AR = ar
+ARFLAGS = cr
+
+SRCS = misc.c generic.c hash.c regexp.c term.c term_inkey.c tparm.c
+OBJS = $(SRCS:.c=.o)
+
+TARS = $(SRCS) configure configure.in Makefile.in config.h.in \
+	generic.h hash.h regexp.h term.h \
+	README.jp BSD-copyright.jp 00_todo \
+	ruby/term.c ruby/extconf.rb.in ruby/test.rb
+
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	@rm -f $(TARGET)
+	$(AR) $(ARFLAGS) $@ $(OBJS)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+
+
+#
+#
+#
+
+install: $(TARGET)
+
+clean:
+	rm -f $(OBJS) $(TARGET) sh_make
+
+distclean:
+	rm -f $(OBJS) $(TARGET) sh_make \
+		Makefile config.h config.cache config.log config.status \
+		ruby/extconf.rb ruby/term.o ruby/term.so
+
+#
+#
+#
+
+tar: $(TARS)
+	@echo $(TARS) | tr [:space:] "\n" | sed -e s:^:$(ARC): | sort >> ../lists.tmp
+
+depend: $(SRCS)
+	cp Makefile.in Makefile.tmp
+	mv Makefile.in Makefile.in.bak
+	makedepend -s "# DO NOT DELETE THIS LINE -- make depend depends on it."\
+		-f Makefile.tmp -- $(CFLAGS) -- $(SRCS)
+	rm -f Makefile.tmp.bak
+	$(SED) -e "/^# DO NOT DELETE THIS LINE/,$$$$d" Makefile.in.bak > Makefile.in
+	echo "# DO NOT DELETE THIS LINE -- make depend depends on it." >> Makefile.in
+	$(SED) -e "1,/^# DO NOT DELETE THIS LINE/d" \
+		-e "s/[\t ]\/[^ ]*//g"\
+		-e "/: *$$/d" Makefile.tmp >> Makefile.in
+	rm -f Makefile.in.bak Makefile.tmp
+
+# DO NOT DELETE THIS LINE -- make depend depends on it.
+
+misc.o: config.h
+misc.o: generic.h
+generic.o: config.h
+generic.o: generic.h
+hash.o: config.h
+hash.o: generic.h hash.h
+regexp.o: config.h
+regexp.o: generic.h regexp.h
+term.o: config.h
+term.o: generic.h term.h
+term_inkey.o: config.h
+term_inkey.o: generic.h term.h

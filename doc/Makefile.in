@@ -1,0 +1,34 @@
+#
+#	Makefile for ne
+#
+
+prefix = @prefix@
+DOCDIR = @datadir@/doc/nxedit
+top_srcdir = @top_srcdir@
+mkinstalldirs = /bin/sh $(top_srcdir)/mkinstalldirs
+INSTALL= @INSTALL@
+INSTALL_DATA= @INSTALL_DATA@
+ROFF= /usr/local/bin/groff -Tnippon
+
+INSS=   ne.cat
+TARS= $(INSS) Makefile.in
+
+all:
+
+cat-man: ../src/ne.1
+	$(ROFF) -man <../src/ne.1 > ne.cat
+
+depend:
+
+clean:
+
+distclean:
+	rm -f Makefile
+
+tar: $(TARS)
+	@echo $(TARS) | tr [:space:] "\n" | sed -e s:^:$(ARC): | sort >> ../lists.tmp
+
+install:
+#	@$(mkinstalldirs) $(DOCDIR)
+#	@set -e; for i in $(INSS); \
+#	do (echo "install $$i" ;  $(INSTALL_DATA) $$i $(DOCDIR)/$$i); done

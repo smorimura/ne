@@ -1,0 +1,41 @@
+#
+#	Makefile for ne
+#
+
+PROG = ne
+prefix = @prefix@
+SYSCONFDIR= @sysconfdir@/ne
+top_srcdir = @top_srcdir@
+mkinstalldirs = /bin/sh $(top_srcdir)/mkinstalldirs
+INSTALL= @INSTALL@
+INSTALL_DATA= @INSTALL_DATA@
+
+INSS=   nerc nerc.ele \
+        key.vz key.ele key.eff key.system \
+        term term.rxvt term.kterm
+
+TARS=   nerc Makefile.in \
+        nerc.ele \
+        key.vz key.ele key.eff key.system \
+        term term.rxvt term.kterm
+
+all:
+
+depend:
+
+clean:
+
+distclean:
+	rm -f Makefile
+
+tar: $(TARS)
+
+install:
+	@$(mkinstalldirs) $(SYSCONFDIR)
+	@set -e; for i in $(INSS); \
+	do (echo "install $$i" ;  $(INSTALL_DATA) $$i $(SYSCONFDIR)/$$i); done
+
+
+tar: $(TARS)
+	@echo $(TARS) | tr [:space:] "\n" | sed -e s:^:$(ARC): | sort >> ../lists.tmp
+

@@ -1,0 +1,6 @@
+require 'mkmf'
+$CFLAGS = "-I.."
+$LDFLAGS = "-L.."
+$libs = "-lele @LIBS@"
+
+create_makefile("term")

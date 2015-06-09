@@ -1,0 +1,48 @@
+.\"    Copyright (c) 1999 SASAKI Shunsuke.
+.\"    All rights reserved. 
+.\"
+.TH NE 1 "September 20, 1999"
+.de sh
+.br
+.PP
+\fB\\$1\fR
+.PP
+..
+.SH NAME
+ne \- Text editor
+
+.SH	SYNOPSIS
+\fBne\fP [\fB-ejor\fP] [\fB-D name\fP=\fIval\fP]
+[\fIfile ...\fP] [\fI+line\fP]
+
+.SH DESCRIPTION	
+.B ne 
+is full screen text editor.
+
+.SH
+options
+
+.IP \fB\-j\fP
+ japanese title bar
+.IP \fB\-e\fP
+ english title bar
+.IP \fB\-o\fp
+ with opening messeges
+.IP \fB\-r\fP
+ resume a edit
+.IP \fB\-D\fP
+ set inside parameter
+.IP \fB+\fP\fIline\fP
+ direction edit point
+.B vi
+ like format
+.\" [-FRSw]
+.\"   -F: no backup file
+.\"   -R: readonly (vim: -v)
+.\"   -S: secure mode
+.\"   -w: direction line
+.\"   -b: binary
+
+.SH AUTHOR
+This manual page was written by Noriyuki SATOH <noriyuki@netvillage.co.jp>,
+for the Debian GNU/Linux system (but may be used by others).
