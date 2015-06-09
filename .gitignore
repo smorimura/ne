@@ -37,4 +37,6 @@ config.*
 extconf.rb
 ne.1
 sh_make
+sh_defs.h
+sh_shells.c
 *~
