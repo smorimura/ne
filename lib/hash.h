@@ -37,7 +37,7 @@
 #define __ELE_G_VAL_H__
 
 
-	/* ¡ù hash */
+	/* â˜† hash */
 
 #define	LN_key	32
 #define	LN_val	256

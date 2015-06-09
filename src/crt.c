@@ -46,8 +46,8 @@ void	crt_crmark()
 
 typedef	struct
 {
-	int 	dline;	// ²èÌÌ¾å¤Î¥é¥¤¥ó
-	long	line;	// ¥Ğ¥Ã¥Õ¥¡¤Î row
+	int 	dline;	// ç”»é¢ä¸Šã®ãƒ©ã‚¤ãƒ³
+	long	line;	// ãƒãƒƒãƒ•ã‚¡ã® row
 
 	block_t	bm;
 }	crt_draw_t;
@@ -361,7 +361,7 @@ static	dspfmt_t	*dspreg_sysmsg(void *vp,int a,int sizex,int sizey)
 }
 
 
-void	system_msg(const char *buffer)	// »ÃÄêÅªdsp²½
+void	system_msg(const char *buffer)	// æš«å®šçš„dspåŒ–
 {
 	OnMessage_Flag = TRUE;
 

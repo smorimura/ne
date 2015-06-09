@@ -87,41 +87,41 @@ typedef	struct _ed
 	struct _ed	*next;
 	char		*buffer;
 
-	size_t		size;		/* ³ÎÊİ¤·¤Æ¤¢¤ë¥Ğ¥Ã¥Õ¥¡¤Î¥µ¥¤¥º */
-	size_t		bytes;		/* ¥Ğ¥Ã¥Õ¥¡¾å¤Î¼Âºİ¤ÎÊ¸»ú¥µ¥¤¥º*/
+	size_t		size;		/* ç¢ºä¿ã—ã¦ã‚ã‚‹ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚º */
+	size_t		bytes;		/* ãƒãƒƒãƒ•ã‚¡ä¸Šã®å®Ÿéš›ã®æ–‡å­—ã‚µã‚¤ã‚º*/
 }	EditLine;
 
 typedef	struct
 {
 
-	int 	x,y;			/* É½¼¨¤Îµ¯ÅÀ */
-	int 	sizex,sizey;	/* ¥Ç¥£¥¹¥×¥ì¥¤¥µ¥¤¥º */
+	int 	x,y;			/* è¡¨ç¤ºã®èµ·ç‚¹ */
+	int 	sizex,sizey;	/* ãƒ‡ã‚£ã‚¹ãƒ—ãƒ¬ã‚¤ã‚µã‚¤ã‚º */
 
 
-	int 	cy;			/* ²èÌÌ¾å¤Ç¤Î¥«¡¼¥½¥ë°ÌÃÖ */
-	long 	ly;			/* ¹ÔÈÖ¹æ */
-	EditLine	*ed;	/* ¤½¤Î¹Ô¤Î¥Ğ¥Ã¥Õ¥¡ */
+	int 	cy;			/* ç”»é¢ä¸Šã§ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½® */
+	long 	ly;			/* è¡Œç•ªå· */
+	EditLine	*ed;	/* ãã®è¡Œã®ãƒãƒƒãƒ•ã‚¡ */
 
-	int 	f_cx,f_sx;	/* fix ¤µ¤ì¤ë¤Ş¤ÇÆ±¤¸°ÌÃÖ¤ò°İ»ı¤·¤è¤¦¤È¤¹¤ë¡£ */
+	int 	f_cx,f_sx;	/* fix ã•ã‚Œã‚‹ã¾ã§åŒã˜ä½ç½®ã‚’ç¶­æŒã—ã‚ˆã†ã¨ã™ã‚‹ã€‚ */
 
 	int 	l_cy;		/* latest. */
-	long 	l_sy;		/* ¤³¤ì¤é¤¬ÊÑ²½¤¹¤ì¤ĞºÆÉÁ²è¤¬É¬Í× */
+	long 	l_sy;		/* ã“ã‚Œã‚‰ãŒå¤‰åŒ–ã™ã‚Œã°å†æç”»ãŒå¿…è¦ */
 
-	size_t	bytes;		/* Á´ÂÎ¤ÎÊÔ½¸¥µ¥¤¥º */
+	size_t	bytes;		/* å…¨ä½“ã®ç·¨é›†ã‚µã‚¤ã‚º */
 
-	bool	gf;			/* ¹ÔËö¥Ş¡¼¥¯¤ò¾Ã¤·¤¿¥Õ¥é¥° */
+	bool	gf;			/* è¡Œæœ«ãƒãƒ¼ã‚¯ã‚’æ¶ˆã—ãŸãƒ•ãƒ©ã‚° */
 }	se_t;
 
 typedef	struct
 {
-	char	buf[MAXEDITLINE+1];	/* ÊÔ½¸¥Ğ¥Ã¥Õ¥¡ */
-	int 	size;		/* ÊÔ½¸¥Ğ¥Ã¥Õ¥¡¤Î¥µ¥¤¥º */
+	char	buf[MAXEDITLINE+1];	/* ç·¨é›†ãƒãƒƒãƒ•ã‚¡ */
+	int 	size;		/* ç·¨é›†ãƒãƒƒãƒ•ã‚¡ã®ã‚µã‚¤ã‚º */
 
-	int 	dsize;		/* É½¼¨²ÄÇ½¥µ¥¤¥º */
-	int 	dx;			/* É½¼¨°ÌÃÖ */
+	int 	dsize;		/* è¡¨ç¤ºå¯èƒ½ã‚µã‚¤ã‚º */
+	int 	dx;			/* è¡¨ç¤ºä½ç½® */
 
-	int 	cx,sx;		/* Àµ¤·¤¤¡¢¥«¡¼¥½¥ë/¥¹¥¯¥í¡¼¥ë°ÌÃÖ */
-	int 	lx;			/* Àµ¤·¤¤¡¢¥Ğ¥Ã¥Õ¥¡¾å¤Î°ÌÃÖ */
+	int 	cx,sx;		/* æ­£ã—ã„ã€ã‚«ãƒ¼ã‚½ãƒ«/ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½® */
+	int 	lx;			/* æ­£ã—ã„ã€ãƒãƒƒãƒ•ã‚¡ä¸Šã®ä½ç½® */
 
 	int 	l_sx;		/* latest. */
 }	le_t;
@@ -129,7 +129,7 @@ typedef	struct
 #define	csrse	edbuf[CurrentFileNo].se
 #define	csrle	edbuf[CurrentFileNo].le
 
-//¥·¥¹¥Æ¥à¾ğÊó
+//ã‚·ã‚¹ãƒ†ãƒ æƒ…å ±
 
 typedef	struct
 {
@@ -153,7 +153,7 @@ typedef	struct
 	color_t		c_eff_normc;
 	color_t		c_eff_normn;
 
-	bool		crmarkf;	/* crmark½èÍı¤ò¹Ô¤¦¤«¤É¤¦¤« */
+	bool		crmarkf;	/* crmarkå‡¦ç†ã‚’è¡Œã†ã‹ã©ã†ã‹ */
 	bool		tabmarkf;
 	bool		autoindentf;
 	bool		numberf;
@@ -367,8 +367,8 @@ extern	int 	keysel_yneq(const char *s);
 typedef	struct
 {
 	char	str[MAXLINESTR+1];
-	color_t	nc;	/* normal»ş */
-	color_t	cc;	/* cursor¤¬¤¢¤ë»ş */
+	color_t	nc;	/* normalæ™‚ */
+	color_t	cc;	/* cursorãŒã‚ã‚‹æ™‚ */
 
 	bool	mf;	/* mark flag */
 }	mitem_t;
@@ -379,9 +379,9 @@ typedef	struct
 	size_t		nums;
 
 	char		*title;
-	bool		df;				/* filer¤ÇÍøÍÑ¤¹¤ëdisable flag */
+	bool		df;				/* filerã§åˆ©ç”¨ã™ã‚‹disable flag */
 
-	int 		sy,cy;			/* ¸½ºß¤ÎºÂÉ¸ */
+	int 		sy,cy;			/* ç¾åœ¨ã®åº§æ¨™ */
 
 	dspreg_t	*drp;
 }	menu_t;
@@ -405,7 +405,7 @@ typedef	struct
 {
 	FILE	*fp;
 	int 	kc;
-	int 	jm;	/* jis½èÍıÃæ */
+	int 	jm;	/* jiså‡¦ç†ä¸­ */
 
 	int 	n_cr,n_lf;
 }	kinfo_t;

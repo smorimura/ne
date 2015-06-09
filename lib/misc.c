@@ -47,7 +47,7 @@
 //	|| c==0x8e;
 
 
-  /* ¡ù misc */
+  /* â˜† misc */
 
 void	strjncpy(char *s,const char *t,size_t ln)
 {
@@ -150,7 +150,7 @@ bool	kanji_chk(const char *s,const char *t)
 
 /*
 
-  strstr, mkdir ¤Ê¤É¤¬¤Ê¤¤´Ä¶­¤Ï¤³¤³¤Ë¤½¤Î¥³¡¼¥É¤òÄÉ²Ã
+  strstr, mkdir ãªã©ãŒãªã„ç’°å¢ƒã¯ã“ã“ã«ãã®ã‚³ãƒ¼ãƒ‰ã‚’è¿½åŠ 
 
 */
 

@@ -78,7 +78,7 @@ static	bool	edbuf_lock(bool func(FILE *, const char*), const char *fn)
 		 fp=fopen(buf, "w+");
 		 if (fp==NULL)
 		 	{
-			 inkey_wait("lock ¥Õ¥¡¥¤¥ë¤¬ open ½ĞÍè¤Ş¤»¤ó");
+			 inkey_wait("lock ãƒ•ã‚¡ã‚¤ãƒ«ãŒ open å‡ºæ¥ã¾ã›ã‚“");
 			 return TRUE;
 			}
 		}
@@ -91,7 +91,7 @@ static	bool	edbuf_lock(bool func(FILE *, const char*), const char *fn)
 		 if (i>=10)
 		 	{
 		 	 fclose(fp);
-		 	 inkey_wait("lock ¥Õ¥¡¥¤¥ë¤¬ lock ¤µ¤ì¤Æ¤¤¤Ş¤¹¡£");
+		 	 inkey_wait("lock ãƒ•ã‚¡ã‚¤ãƒ«ãŒ lock ã•ã‚Œã¦ã„ã¾ã™ã€‚");
 		 	 return TRUE;
 		 	}
 		}
@@ -189,7 +189,7 @@ bool	edbuf_add(const char *fn)
 
 	if (!edbuf_lock(edbuf_add_func, fn))
 		{
-		 inkey_wait("´û¤Ë¥ª¡¼¥×¥ó¤µ¤ì¤Æ¤¤¤Ş¤¹¡£");
+		 inkey_wait("æ—¢ã«ã‚ªãƒ¼ãƒ—ãƒ³ã•ã‚Œã¦ã„ã¾ã™ã€‚");
 		 return FALSE;
 		}
 
@@ -204,9 +204,9 @@ bool	edbuf_mv(int n, const char *fn)
 	edbuf_lock(edbuf_rm_func, edbuf[n].path);
 	if (!edbuf_lock(edbuf_add_func, fn))
 		{
-		 inkey_wait("´û¤Ë¥ª¡¼¥×¥ó¤µ¤ì¤Æ¤¤¤Ş¤¹¡£");
+		 inkey_wait("æ—¢ã«ã‚ªãƒ¼ãƒ—ãƒ³ã•ã‚Œã¦ã„ã¾ã™ã€‚");
 		 if (!edbuf_lock(edbuf_add_func, edbuf[n].path))
-		 	inkey_wait("¸µ¥Õ¥¡¥¤¥ë¤â¥ª¡¼¥×¥ó¤µ¤ì¤Æ¤¤¤Ş¤¹¡£");
+		 	inkey_wait("å…ƒãƒ•ã‚¡ã‚¤ãƒ«ã‚‚ã‚ªãƒ¼ãƒ—ãƒ³ã•ã‚Œã¦ã„ã¾ã™ã€‚");
 		 return FALSE;
 		}
 
@@ -438,12 +438,12 @@ int 	fileopen(char *filename)
 
 	sf=stat(filename, &sbuf);
 	if (!sf&& (sbuf.st_mode&S_IFMT)!= S_IFREG)
-		return FALSE;	/* ¥ì¥®¥å¥é¡¼¥Õ¥¡¥¤¥ë¤Ç¤Ï¤Ê¤¤¡£*/
+		return FALSE;	/* ãƒ¬ã‚®ãƒ¥ãƒ©ãƒ¼ãƒ•ã‚¡ã‚¤ãƒ«ã§ã¯ãªã„ã€‚*/
 
 	fp=fopen(filename,"r");
 	if (fp==NULL)
 		{
-		 if (access(filename,F_OK)==-1) /* ¿·µ¬¥Õ¥¡¥¤¥ë */
+		 if (access(filename,F_OK)==-1) /* æ–°è¦ãƒ•ã‚¡ã‚¤ãƒ« */
 		 	{
 		 	 lists_add(file_new_proc,"");
 		 	 edbuf[CurrentFileNo].ct = -1;
@@ -455,7 +455,7 @@ int 	fileopen(char *filename)
 		 	}
 		 if (access(filename, R_OK) == -1) 
 		 	 inkey_wait(PERMISSION_MSG); else
-		 	 inkey_wait("ÉÔÌÀ¤Ê¥¨¥é¡¼");
+		 	 inkey_wait("ä¸æ˜ãªã‚¨ãƒ©ãƒ¼");
 		 return FALSE;
 		}
 
@@ -475,7 +475,7 @@ int 	fileopen(char *filename)
 	lists_add(file_open_proc,&ki);
 
 
-/* CR/LF¥â¡¼¥É¤Î³ÎÄê */
+/* CR/LFãƒ¢ãƒ¼ãƒ‰ã®ç¢ºå®š */
 	n=max(ki.n_cr,ki.n_lf);
 	if (n==0)
 		edbuf[CurrentFileNo].rm=0; else
@@ -589,7 +589,7 @@ bool	FileOpenOp(const char *path)
 	if (!edbuf_add(pf))
 		return FALSE;
 
-	FileStartInit(TRUE); //!!?? ¤Ê¤¼¤³¤³¤Ë¤³¤ì¤¬É¬Í×¡©
+	FileStartInit(TRUE); //!!?? ãªãœã“ã“ã«ã“ã‚ŒãŒå¿…è¦ï¼Ÿ
 
 	if (fileopen(edbuf[CurrentFileNo].path))
 		return TRUE;
@@ -764,7 +764,7 @@ SHELL	void	op_file_quit()
 }
 
 
-void 	op_file_undo()	/* ÊÔ½¸undo */
+void 	op_file_undo()	/* ç·¨é›†undo */
 {
 	 long lineOffset;
 	char	pf[LN_path+1];
@@ -818,7 +818,7 @@ void	op_menu_file()
 			op_file_save();
 			break;
 		case 3:
-// ¥Õ¥¡¥¤¥ëÌ¾¤ò»ØÄê¤·¤Æsave¡£
+// ãƒ•ã‚¡ã‚¤ãƒ«åã‚’æŒ‡å®šã—ã¦saveã€‚
 			break;
 		case 4:
 			op_file_aclose();

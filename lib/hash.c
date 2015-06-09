@@ -40,7 +40,7 @@
 #include	"hash.h"
 
 
-	/* ¡ùhash */
+	/* â˜†hash */
 
 hash_t	*hash_init(hash_t *gvp,int m)
 {
@@ -123,7 +123,7 @@ void	hash_report(hash_t *gvp)
 {
 	int 	i;
 
-	report_puts("ÆâÉôÊÑ¿ô:\n");
+	report_puts("å†…éƒ¨å¤‰æ•°:\n");
 	for (i=0;i<gvp->num;++i)
 		report_printf("  %s = [%s]\n", gvp->item[i].key, gvp->item[i].val);
 }

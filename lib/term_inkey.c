@@ -75,7 +75,7 @@ void	term_keyreport()
 {
 	int 	i;
 
-	report_puts("¥­¡¼¥·¡¼¥±¥ó¥¹:\n");
+	report_puts("ã‚­ãƒ¼ã‚·ãƒ¼ã‚±ãƒ³ã‚¹:\n");
 	for (i=0; i<esc_num; ++i)
 		report_printf("  [%s] -> %08x\n",esc[i].seq, esc[i].scode);
 }

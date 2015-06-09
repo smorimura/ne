@@ -1,38 +1,38 @@
-  ! kon �Ǥ� underline �Ф�ޤ� glitch ����
+  ! kon での underline ばらまき glitch の謎
 
-  ! ���� lib ��ñ�Τǰ�����褦�ˤ��롣
-  ! �������ۤˤϴޤ�ʤ����ɡ�����Ū�ʥ饤�֥�꡼�� import �����褦��
-    regexp �ʤɡ�
+  ! この lib を単体で扱えるようにする。
+  ! この配布には含めないけど、一般的なライブラリーを import 出来るように
+    regexp など。
 
-  ! lib_complete �ײ�
-  o Ruby ��ĥ�饤�֥��
+  ! lib_complete 計画
+  o Ruby 拡張ライブラリ
 
 
-  o ����
+  o 中断
     o [ESC][ESC]
-    o ���ǥ����å��ǲ��������Ԥ��褦�ˡ�
-    o �����Хȥ�
-  o system_message �ʤ� disp ʪ��Ĵ��
+    o 中断チェックで画面描画も行うように。
+    o くるるバトン
+  o system_message など disp 物の調整
 
-  o ���� key ����
-    o key macro �ν�ľ��
-    o macro �������襹���åפϤ��٤����ɤ�����
+  o 新式 key 処理
+    o key macro の書き直し
+    o macro 時に描画スキップはすべきかどうか？
 
-    o ��ư�����ե�����̾����ꤷ�ʤ���硢�ե����륪���ץ�ˡ�
-    o �Խ��ե����뤬�ʤ��ʤä����֤Ǥ�ե����륪���ץ�/�ե����顼�ˡ�
+    o 起動時、ファイル名を指定しない場合、ファイルオープンに。
+    o 編集ファイルがなくなった状態でもファイルオープン/ファイラーに。
 
-    o ľ���Υ��ޥ�ɤμ¹Ԥ��������롣
+    o 直前のコマンドの実行を装備する。
     o ne_loop
     o keydef
-      o get_keyf �� keydef ptr �򤫤����褦�ˤ��롣
-      ? 3�ʾ�Υ�������
-      o ��ĥ��Ƚ�̤�����
+      o get_keyf を新 keydef ptr をかえすようにする。
+      ? 3以上のシーケンス
+      o 拡張子判別の装備
       o !{}
 
 
 
 
-  o ���꡼
+  o メモリー
     o alloca
 
 
@@ -42,132 +42,132 @@
     o wcs* (lib_complete)
     o mb* shim
 
-    o ���ץ��٥�Ǥμ�ͳ�����
-      o �ü�ʥ�����
-        o \0, �Ƽ�ctrl code
-        o �»Ҥ�2byteʸ��
-        o Ⱦ�ѥ���
+    o アプリレベルでの自由な操作
+      o 特殊なコード
+        o \0, 各種ctrl code
+        o 迷子の2byte文字
+        o 半角カナ
 
 
 
 
 
-  o Eterm,aterm,kon �ʤɳƼ�ü���Ǥμ¸�
-  o Cygwin �Ǥμ¸�
+  o Eterm,aterm,kon など各種端末での実験
+  o Cygwin での実験
 
 
-  o ���� disp ��ǥ�
-    o underline �κ�������
-    o ����ʬ���б���
+  o 新式 disp モデル
+    o underline の再装備。
+    o 画面分割対応。
 
-    o �ִ��λ����оݤΥޡ�������ˡ���ѹ����롣
-    ? �������奢��ޡ���������
+    o 置換の時の対象のマークの方法を変更する。
+    ? ヴィジュアルマークの復活
 
-    / ANSI-COLOR ���б���
+    / ANSI-COLOR の対応。
 
 
-  o �ե��������
-    o �������롣
-    o current working directory �ΰ��������˸�ľ����
-    o �ե��������Ʊ������å����ľ����i-node?
+  o ファイル処理
+    o 整理する。
+    o current working directory の扱いを完全に見直す。
+    o ファイル類の同一チェックを書き直す。i-node?
 
   o config
-    o ��ư���� nerc ���ʤ����� nerc �򥳥ԡ����Ƥ��롣
-    o ���åץǡ��Ȼ�����
+    o 起動時に nerc がない場合に nerc をコピーしてくる。
+    o アップデート時更新
 
-  o shell util. �� perl/Ruby �� port��
+  o shell util. を perl/Ruby に port。
 
 
 
-�� �ޤä���
+○ まったり
 
-  x kterm, �Ǥ� HOME, END ����
-  x Teraterm �Ǥ� BS, DEL ����
+  x kterm, での HOME, END キー
+  x Teraterm での BS, DEL キー
 
-  ! fopen/open �Ϻ���....��
+  ! fopen/open 系混在....。
   ? sgtty
-  o ����������Ȥ��٤ˤ�....!?
-  o margin ��ۤ��������Ǥ� \b ??
+  o 横幅全部を使う為には....!?
+  o margin を越えたうえでの \b ??
 
-  ? block ɽ����� �������뤬�ä����㤦����
+  ? block 表示中の カーソルが消えちゃう現象
 
 
-��
+○
 
-  o ���Ϥ��륷�����󥹤򥫥����ޥ��������褦�ˡ�
-  ? locate ̿�����֤κ�Ŭ��
-  o scr �� resize ���б�����
-  o /dev/tty �� open ����ʤ����ν���
-  / n bytes ����
+  o 出力するシーケンスをカスタマイズ出来るように。
+  ? locate 命令配置の最適化
+  o scr の resize に対応する
+  o /dev/tty を open 出来ない時の処理
+  / n bytes 問題
 
-  o hash �ν�ľ��
-    o term_escset��hash�ǡ�
+  o hash の書き直し
+    o term_escsetをhashで。
 
   o term
-    o ���̥������������ä����ޤȤ�˽�ľ����
-    ? meta key, Ⱦ�Ѥ��ʤ����Ϥؤ��б���
+    o 画面サイズ取得をもっかいまともに書き直す。
+    ? meta key, 半角かなの入力への対応。
 
-��
+○
 
   o config
-    o ʸˡ����Ū�˸�ľ��
+    o 文法全体的に見直し
     o name ?= val
 
-    o ��˥塼
-      ? �����ƥ�С���ɽ�������������档
-      ? �����ƥ६���ɤ�Vz�ܲ�Ʊ�ͤˤǤ���褦�ˤ��롣
+    o メニュー
+      ? システムバーに表示する情報の制御。
+      ? システムガイドをVz本家同様にできるようにする。
 
-    o �����ĥ�ҡ��ǥ��쥯�ȥ���Ф��Ƥ��������ʥ��ץ������դ��롣
+    o ある拡張子、ディレクトリに対していろいろなオプションを付ける。
 
-    o ư���Ƥ����Υ����������ޥ�����������
-    o ee �ߤ����ʥ���ե����졼�����ν��ϵ�ǽ��
-    o ����ե�����Υ����å��ѥ��ޥ��/���ץ������������롣
+    o 動いてる最中のキーカスタマイズを装備。
+    o ee みたいなコンフィグレーションの出力機能。
+    o 設定ファイルのチェック用コマンド/オプションを装備する。
 
 
-  o keys�ǥ������ϤʤɤΤ���ʬŪ��X���б����롣
-    X�Υ������Ϥ򥤥󥿡����ץȤäƲ�ǽ�ʤΤ���������
-    o Windoze�ϥ��ǥ����饤���ʵ�ǽ��������
+  o keysでキー入力などのみ部分的にXに対応する。
+    Xのキー入力をインターセプトって可能なのだろうか？
+    o Windoze系エディタライクな機能を装備。
 
-  o X���Ȥ�����ˤ�X���Ѥ��ƥ������ϡ�
-    ? Kterm�ʤɤ��Ф��ƥ��٥�Ȥ���˥��󥿡����ץȡ�
-    . rxvt��kinput2����Ϥ��롣
+  o Xが使える時にはXを用いてキー入力。
+    ? Ktermなどに対してイベントを先にインターセプト。
+    . rxvtやkinput2を解析する。
 
-      ? ezkey�ߤ��������ѤΥ��֥ץ���������󤹤�?��
+      ? ezkeyみたいな専用のサブプロセスを常駐する?。
 
-    o Windows�ϥ��ǥ���������ե�������Ѱդ��롣
+    o Windows系エディタの設定ファイルを用意する。
 
-    o �ݥ��󥿥���å��ǥ��������ư���б��Ȥ���
+    o ポインタクリックでカーソル移動に対応とか。
 
-  o IM ��ľ�ܽ����Ǥ���褦�ˤ��롣
-    �ƥ����ȥ��󥽡�����....��
-    o ���̤�ɤ����뤫��
-    o IM����������ɤ����뤫��
-      . kinput, uum/canuum, canfep �򻲹ͤˤ��롣
-    ? SKK���б����롣
+  o IM を直接処理できるようにする。
+    テキストコンソール用....。
+    o 画面をどうするか。
+    o IMアクセスをどうするか。
+      . kinput, uum/canuum, canfep を参考にする。
+    ? SKKに対応する。
 
-��
+○
 
   o locate
-    - ���а��ֻ���
+    - 絶対位置指定
 
-    o �岼�������а�ư
-    o �屦��İ�ư
-    / ������İ�ư
+    o 上下左右相対移動
+    o 上右一つ移動
+    / 下左一つ移動
     / cr
     o home
-    - ʸ��ɽ��������
+    - 文字表示で送る
 
-�� done
+○ done
 
-  - locate �κ�Ŭ��
-    - �Ƽ��ʤ�ƥ��Ȥ���tgoto �ν��Ϥ���Ӥ�û��������ϡ�
-  - FreeBSD cons �Ǥ��Զ�硣
-  - ktx �ʤɤ�ʸ��������2byte ʸ���ؤ��б�
-  - ��Ʊ������
+  - locate の最適化
+    - 各手段をテストし、tgoto の出力と比較し短い方を出力。
+  - FreeBSD cons での不具合。
+  - ktx などで文字化け。2byte 文字への対応
+  - 非同期描画
   - tparam scroll
-  - ��Ŭ���Ǥ��륹�ڡ����� ^[[K
-  - inkey ���Ф��� csr locate flush
+  - 最適化できるスペースを ^[[K
+  - inkey に対する csr locate flush
   - term_csr*
-  - vi Ū��Ʊ������
-  - ����������ɽ�������ѤǤ���褦�ˡ�
+  - vi 的非同期描画
+  - 検索で正規表現を利用できるように。
 

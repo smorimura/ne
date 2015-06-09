@@ -1,27 +1,27 @@
 # ele's default configuration.
 
 !R	Val
-  Japanese      = On      #   (on/off)ɽ����å������θ���
-  AutoIndent    = On      #Ei (on/off)�����ȥ���ǥ��
-  Backfile      = Off     #Eb (on/off)�ե�����ΥХå����å�
-  FreeCursor    = Off     #En (on/off)�ե꡼��������
-  NoCase        = On      #   (on/off)����ʸ������ʸ������ʸ���ζ���̵��
-  Number        = Off     #Dl (on/off)���ֹ��ɽ������
-  OverWrite     = Off     #   (on/off)���/����
-  TabMark       = Off     #Dt (on/off)���ֵ���� ">" �ޡ�����ɽ������
-  TabStop       = 4       #Ta <number>���֥��ȥå׿�����ꤹ��
-  AnsiColor     = On      #   (on/off)ANSI���������ץ������󥹤ο���Ȥ�
+  Japanese      = On      #   (on/off)表示メッセージの言語
+  AutoIndent    = On      #Ei (on/off)オートインデント
+  Backfile      = Off     #Eb (on/off)ファイルのバックアップ
+  FreeCursor    = Off     #En (on/off)フリーカーソル
+  NoCase        = On      #   (on/off)検索文字の大文字・小文字の区別無し
+  Number        = Off     #Dl (on/off)行番号を表示する
+  OverWrite     = Off     #   (on/off)上書き/挿入
+  TabMark       = Off     #Dt (on/off)タブ記号を ">" マークで表示する
+  TabStop       = 4       #Ta <number>タブストップ数を指定する
+  AnsiColor     = On      #   (on/off)ANSIエスケープシーケンスの色を使う
 
 
-# ��������ե���
-#   /usr/local/share/ne/ �ʤɤΥǥ��쥯�ȥ�Τ����ˡ�
-#   key.vz �ʤɤ�����ե���������Τ�����ޤ���
-#   ���������������򤤤�����ϡ������Ŭ����
-#   ~/.ne/ �Τ����˥��ԡ����Ƥ��餤���äƤߤƤ���������
+# キーコンフィグ
+#   /usr/local/share/ne/ などのディレクトリのしたに、
+#   key.vz などの定義ファイルの本体があります。
+#   キーアサイン等をいじる場合は、それを適当に
+#   ~/.ne/ のしたにコピーしてからいじってみてください。
 
 !I	key.ele           #editor keybind
 !I	key.system        #system keybind
 !I	key.eff           #filer  keybind
 
 
-  CRMark        = ${AnsiColor}  #Dc (on/off)���������ɽ������
+  CRMark        = ${AnsiColor}  #Dc (on/off)行末記号を表示する

@@ -43,7 +43,7 @@
 #include	"regexp.h"
 
 
-/* ¸¡º÷ */
+/* æ¤œç´¢ */
 
 #ifdef	HAVE_REGCOMP
 bool	regexp_exec(const char *s, int x, const char *t,regm_t *rmp, bool f)

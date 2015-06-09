@@ -35,7 +35,7 @@
 
 static	void	opening()
 {
-/* Emacs Åª¥¬¥¤¥ÉÉ½¼¨¤ò¤¤¤ì¤ë¡£ */
+/* Emacs çš„ã‚¬ã‚¤ãƒ‰è¡¨ç¤ºã‚’ã„ã‚Œã‚‹ã€‚ */
 
 //	term_cls();
 //	term_color_normal();
@@ -143,7 +143,7 @@ void	ne_report()
 #endif
 
 	report_puts("***\n");
-	report_puts("´Ä¶­ÊÑ¿ô:\n");
+	report_puts("ç’°å¢ƒå¤‰æ•°:\n");
 	report_printf("  $HOME: %s\n", getenv("HOME"));
 	report_printf("  $TERM: %s\n", getenv("TERM"));
 	report_printf("  $NE_TERM: %s\n", getenv("NE_TERM"));

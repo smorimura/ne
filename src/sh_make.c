@@ -76,10 +76,10 @@ int 	main(int argc,char *argv[])
 	int 	func_max,region_max;
 
 	p=argc<2?"sh_shells.c":argv[1];
-/*fprintf(stderr,"  [%s]¤Ë½ÐÎÏ¤·¤Þ¤¹¡£\n",p);*/
+/*fprintf(stderr,"  [%s]ã«å‡ºåŠ›ã—ã¾ã™ã€‚\n",p);*/
 	fpw=fopen(p,"w");
 	if (fpw==NULL)
-		error("error:write mode¤Ç¥Õ¥¡¥¤¥ë¥ª¡¼¥×¥ó¤Ç¤­¤Þ¤»¤ó¡£");
+		error("error:write modeã§ãƒ•ã‚¡ã‚¤ãƒ«ã‚ªãƒ¼ãƒ—ãƒ³ã§ãã¾ã›ã‚“ã€‚");
 
 	strcpy(fname[0],"sh.h");
 	file_n=1;
@@ -95,7 +95,7 @@ int 	main(int argc,char *argv[])
 		 fpr=fopen(fname[f],"r");
 /*fprintf(stderr,"fopen [%s]\n",fname[f]);*/
 		 if (fpr==NULL)
-		 	continue; /* ¥Õ¥¡¥¤¥ë¤¬open¤Ç¤­¤Ê¤¤¾ì¹ç¡¢Ìµ»ë */
+		 	continue; /* ãƒ•ã‚¡ã‚¤ãƒ«ãŒopenã§ããªã„å ´åˆã€ç„¡è¦– */
 
 		 while(fgets(buf,sizeof(buf),fpr))
 		 	{
@@ -160,8 +160,8 @@ int 	main(int argc,char *argv[])
 		 	 if (strcmp(p,"SHELL")!=0)
 		 	 	continue;
 
-		 	 p=strtok(NULL," \t");	/* ·¿ */
-		 	 p=strtok(NULL,"(");	/* ´Ø¿ô */
+		 	 p=strtok(NULL," \t");	/* åž‹ */
+		 	 p=strtok(NULL,"(");	/* é–¢æ•° */
 		 	 if (p==NULL)
 		 	 	error("Wrong function define");
 
@@ -175,7 +175,7 @@ int 	main(int argc,char *argv[])
 		 	 p[i+1]='\0';
 		 	 strcpy(func[region][func_n[region]].name,p);
 
-		 	 func[region][func_n[region]].args=1;	/* °ú¿ô¤Î¿ô¤Ï³Î¤«¤á¤Æ¤¤¤Ê¤¤¡£ */
+		 	 func[region][func_n[region]].args=1;	/* å¼•æ•°ã®æ•°ã¯ç¢ºã‹ã‚ã¦ã„ãªã„ã€‚ */
 
 /*fprintf(stderr,"SHELL [%s]%d\n"
 	,func[region][func_n[region]].name,func[region][func_n[region]].args);*/

@@ -144,7 +144,7 @@ void	CursorMove()
 		{
 		 term_locate(GetRow(), GetCol()+NumWidth);
 		 term_color_normal();
-		 term_putch(' ');		/* ¹ÔËö¥Ş¡¼¥¯¤ò¾Ã¤¹¡£ */
+		 term_putch(' ');		/* è¡Œæœ«ãƒãƒ¼ã‚¯ã‚’æ¶ˆã™ã€‚ */
 
 		 csrse.gf=TRUE;
 		}

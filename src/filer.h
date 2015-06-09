@@ -46,11 +46,11 @@ fw_t	fw[2];
 
 typedef	struct
 {
-	int 	wn;			/* window¤Î¿ô */
-	int 	wa;			/* Window Active °ÌÃÖ */
+	int 	wn;			/* windowã®æ•° */
+	int 	wa;			/* Window Active ä½ç½® */
 	bool	df;			/* dirty flag */
 
-	int 	sort[2];	/* sortÊı¼° */
+	int 	sort[2];	/* sortæ–¹å¼ */
 }	eff_t;
 eff_t	eff;
 

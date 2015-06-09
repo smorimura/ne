@@ -1,29 +1,29 @@
-# ¥·¥¹¥Æ¥àÍÑ¥­¡¼¥¢¥µ¥¤¥ó(Menu/Ê¸»úÎóÆþÎÏ¤Ê¤É)
-#   º¸¤Ë¥­¡¼¡¢:¤Î±¦¤Ë¼Â¹Ô¤¹¤ëÌ¿Îá¤ò½ñ¤­¤Þ¤¹¡£
-#   ¥­¡¼¤ÏÊ£¿ô¤ò¤Þ¤È¤á¤Æ»ØÄê¤¹¤ë»ö¤â¤Ç¤­¤Þ¤¹¡£
+# ã‚·ã‚¹ãƒ†ãƒ ç”¨ã‚­ãƒ¼ã‚¢ã‚µã‚¤ãƒ³(Menu/æ–‡å­—åˆ—å…¥åŠ›ãªã©)
+#   å·¦ã«ã‚­ãƒ¼ã€:ã®å³ã«å®Ÿè¡Œã™ã‚‹å‘½ä»¤ã‚’æ›¸ãã¾ã™ã€‚
+#   ã‚­ãƒ¼ã¯è¤‡æ•°ã‚’ã¾ã¨ã‚ã¦æŒ‡å®šã™ã‚‹äº‹ã‚‚ã§ãã¾ã™ã€‚
 !R	Key:sys
 
-  [ESC]             : Escape                #½ªÎ»
-  [CR]              : Return                #ÁªÂò¡¢ÆþÎÏ³ÎÄê¤¹¤ë
+  [ESC]             : Escape                #çµ‚äº†
+  [CR]              : Return                #é¸æŠžã€å…¥åŠ›ç¢ºå®šã™ã‚‹
 
-  ^E [UP]           : Cursorup              #¥«¡¼¥½¥ë¤ò¾å¤Ë¡¢¥Ò¥¹¥È¥ê¡¼¸Æ¤Ó½Ð¤·
-  ^X [DOWN]         : Cursordown            #¥«¡¼¥½¥ë¤ò²¼¤Ë¡¢¥Ò¥¹¥È¥ê¡¼¸Æ¤Ó½Ð¤·
-  ^S [LEFT]         : Cursorleft            #¥«¡¼¥½¥ë¤òº¸¤Ë
-  ^D [RIGHT]        : Cursorright           #¥«¡¼¥½¥ë¤ò±¦¤Ë
+  ^E [UP]           : Cursorup              #ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸Šã«ã€ãƒ’ã‚¹ãƒˆãƒªãƒ¼å‘¼ã³å‡ºã—
+  ^X [DOWN]         : Cursordown            #ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸‹ã«ã€ãƒ’ã‚¹ãƒˆãƒªãƒ¼å‘¼ã³å‡ºã—
+  ^S [LEFT]         : Cursorleft            #ã‚«ãƒ¼ã‚½ãƒ«ã‚’å·¦ã«
+  ^D [RIGHT]        : Cursorright           #ã‚«ãƒ¼ã‚½ãƒ«ã‚’å³ã«
 
-  ^H [BS]           : Backspace             #°ì¤ÄÁ°¤ÎÊ¸»úºï½ü
-  ^G [DEL]          : Deletechar            #¤½¤Î¾ì¤ÎÊ¸»úºï½ü
-  ^P                : Cntrlinput            #¥³¥ó¥È¥í¡¼¥ëÊ¸»ú¤òÆþÎÏ
+  ^H [BS]           : Backspace             #ä¸€ã¤å‰ã®æ–‡å­—å‰Šé™¤
+  ^G [DEL]          : Deletechar            #ãã®å ´ã®æ–‡å­—å‰Šé™¤
+  ^P                : Cntrlinput            #ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«æ–‡å­—ã‚’å…¥åŠ›
 
-  ^R \[UP]          : Scrolldown            #¥«¡¼¥½¥ë¤ò1¥Ú¡¼¥¸¾å¤Ë
-  ^C \[DOWN]        : Scrollup              #¥«¡¼¥½¥ë¤ò1¥Ú¡¼¥¸²¼¤Ë
+  ^R \[UP]          : Scrolldown            #ã‚«ãƒ¼ã‚½ãƒ«ã‚’1ãƒšãƒ¼ã‚¸ä¸Šã«
+  ^C \[DOWN]        : Scrollup              #ã‚«ãƒ¼ã‚½ãƒ«ã‚’1ãƒšãƒ¼ã‚¸ä¸‹ã«
 
   ^W ^[UP]          : Rollup                #?
   ^Z ^[DOWN]        : Rolldown              #?
 
-  ^QE               : Cursorupside          #¥«¡¼¥½¥ë¤ò²èÌÌºÇ¾åÉô¤Ë
-  ^QX               : Cursordownside        #¥«¡¼¥½¥ë¤ò²èÌÌºÇ²¼Éô¤Ë
-  ^QS \[LEFT]       : Cursorleftside        #¥«¡¼¥½¥ë¤òº¸Ã¼¤Ë
-  ^QD \[RIGHT]      : Cursorrightside       #¥«¡¼¥½¥ë¤ò±¦Ã¼¤Ë
-  ^QR               : Cursortopside         #¥«¡¼¥½¥ë¤ò¾åÃ¼¤Ë
-  ^QC               : Cursorendside         #¥«¡¼¥½¥ë¤ò²¼Ã¼¤Ë
+  ^QE               : Cursorupside          #ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”»é¢æœ€ä¸Šéƒ¨ã«
+  ^QX               : Cursordownside        #ã‚«ãƒ¼ã‚½ãƒ«ã‚’ç”»é¢æœ€ä¸‹éƒ¨ã«
+  ^QS \[LEFT]       : Cursorleftside        #ã‚«ãƒ¼ã‚½ãƒ«ã‚’å·¦ç«¯ã«
+  ^QD \[RIGHT]      : Cursorrightside       #ã‚«ãƒ¼ã‚½ãƒ«ã‚’å³ç«¯ã«
+  ^QR               : Cursortopside         #ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸Šç«¯ã«
+  ^QC               : Cursorendside         #ã‚«ãƒ¼ã‚½ãƒ«ã‚’ä¸‹ç«¯ã«

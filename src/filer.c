@@ -59,11 +59,11 @@ fw_t	fw[2];
 
 typedef	struct
 {
-	int 	wn;			/* window¤Î¿ô */
-	int 	wa;			/* Window Active °ÌÃÖ */
+	int 	wn;			/* windowã®æ•° */
+	int 	wa;			/* Window Active ä½ç½® */
 	bool	df;			/* dirty flag */
 
-	int 	sort[2];	/* sortÊı¼° */
+	int 	sort[2];	/* sortæ–¹å¼ */
 }	eff_t;
 eff_t	eff;
 
@@ -99,7 +99,7 @@ typedef struct	fop
 
 
 
-/* ¥Ç¥£¥ì¥¯¥È¥ê°ÜÆ°Ê×Îò½èÍı */
+/* ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªç§»å‹•éæ­´å‡¦ç† */
 
 typedef	struct
 {
@@ -451,7 +451,7 @@ static	int 	findex_comp(const void *x,const void *y)
 		  case SA_none:
 		  	 return 0;
 		  case SA_fname:
-		  	 j=strcmp(fi_x->fn, fi_y->fn); //!! ¸·Ì©¤ÊÈ½Äê¤ò¡©
+		  	 j=strcmp(fi_x->fn, fi_y->fn); //!! å³å¯†ãªåˆ¤å®šã‚’ï¼Ÿ
 		  	 break;
 		  case SA_ext:
 		  	 j=strcmp(fi_x->e ,fi_y->e);
@@ -658,11 +658,11 @@ static	bool	select_readonly(fop_t *fop)
 	if (fop->pfm!=0)
 		return fop->pfm==FP_force;
 
-	system_msg("¥ê¡¼¥É¥ª¥ó¥ê¡¼¤Ç¤¹¡£");
+	system_msg("ãƒªãƒ¼ãƒ‰ã‚ªãƒ³ãƒªãƒ¼ã§ã™ã€‚");
 
 	res=menu_vselect(term_sizex()/2, term_sizey()/2
-					, 4, "Y) ½èÍı¤¹¤ë", "N) ½èÍı¤·¤Ê¤¤"
-					,"A) °Ê¹ßÁ´¤Æ½èÍı¤¹¤ë", "K) °Ê¹ßÁ´¤Æ½èÍı¤·¤Ê¤¤");
+					, 4, "Y) å‡¦ç†ã™ã‚‹", "N) å‡¦ç†ã—ãªã„"
+					,"A) ä»¥é™å…¨ã¦å‡¦ç†ã™ã‚‹", "K) ä»¥é™å…¨ã¦å‡¦ç†ã—ãªã„");
 
 
 	RefreshMessage();
@@ -709,8 +709,8 @@ int 	fw_fop_file(const char *srcpath,const char *fn,struct stat *srcstp
 		 	 	 if (fop->om==0)
 		 	 	 	{
 					 fop->om=1+menu_vselect(term_sizex()/2, term_sizey()/2, 4
-					 	, "O) Á´¤Æ¾å½ñ¤­", "U) ¿·¤·¤¤ÆüÉÕ¤ò"
-					 	, "N) Æ±Ì¾¤ÏÊ£¼Ì¤·¤Ê¤¤", "R) Ì¾Á°¤òÊÑ¤¨¤Æ");
+					 	, "O) å…¨ã¦ä¸Šæ›¸ã", "U) æ–°ã—ã„æ—¥ä»˜ã‚’"
+					 	, "N) åŒåã¯è¤‡å†™ã—ãªã„", "R) åå‰ã‚’å¤‰ãˆã¦");
 
 //		 	 	 	 eff.df=TRUE;
 		 	 	 	}
@@ -747,7 +747,7 @@ int 	fw_fop_file(const char *srcpath,const char *fn,struct stat *srcstp
 		 	return res;
 
 		 res=menu_vselect(term_sizex()/2, term_sizey()/2, 3,
-		 	"A) Ãæ»ß", "R) ºÆ»î", "S) ·ÑÂ³");
+		 	"A) ä¸­æ­¢", "R) å†è©¦", "S) ç¶™ç¶š");
 
 //		 eff.df=TRUE;
 
@@ -786,7 +786,7 @@ int 	fw_fop_dir(const char *srcpath,const char *fn,struct stat *srcstp
 		 	 	 return FR_ok;
 		 	 	}
 
-		 	 inkey_wait("¥Ç¥£¥ì¥¯¥È¥ê¤ÈÆ±Ì¾¤Î¥Õ¥¡¥¤¥ë¤¬Â¸ºß¤·¤Ş¤¹¡£");
+		 	 inkey_wait("ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¨åŒåã®ãƒ•ã‚¡ã‚¤ãƒ«ãŒå­˜åœ¨ã—ã¾ã™ã€‚");
 		 	 return FR_err;
 		 	}
 //	 	 if (errno!=ENOENT)
@@ -799,7 +799,7 @@ int 	fw_fop_dir(const char *srcpath,const char *fn,struct stat *srcstp
 		 if (res!=FR_err)
 		 	return res;
 		 res=menu_vselect(term_sizex()/2, term_sizey()/2, 3,
-		 	"A) Ãæ»ß", "R) ºÆ»î", "S) ·ÑÂ³");
+		 	"A) ä¸­æ­¢", "R) å†è©¦", "S) ç¶™ç¶š");
 
 //		 eff.df=TRUE;
 
@@ -1060,17 +1060,17 @@ bool	fw_cpdest(char *s, fw_t *srcfwp, fw_t *dstfwp)
 		 strcpy(s,dstfwp->path);
 		 reg_path(NULL, s,TRUE);
 //fprintf(stderr,"dst [%s]\n",s);
-		 if (strcmp(srcpath,s)!=0)	// !!¼«Ê¬¤Î²¼¤«¤É¤¦¤«¥Á¥§¥Ã¥¯¤â¹Ô¤¦
+		 if (strcmp(srcpath,s)!=0)	// !!è‡ªåˆ†ã®ä¸‹ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯ã‚‚è¡Œã†
 		 	return TRUE;
 		}
 
 	*s='\0';
-	if (GetS("Ê£¼ÌÀè :",s)==ESCAPE)
+	if (GetS("è¤‡å†™å…ˆ :",s)==ESCAPE)
 		return FALSE;
 //fprintf(stderr,"dst*[%s]\n",s);
 	reg_path(srcpath, s,FALSE);
 
-	if (strcmp(srcpath,s)==0)	// !!¼«Ê¬¤Î²¼¤«¤É¤¦¤«¥Á¥§¥Ã¥¯¤â¹Ô¤¦
+	if (strcmp(srcpath,s)==0)	// !!è‡ªåˆ†ã®ä¸‹ã‹ã©ã†ã‹ãƒã‚§ãƒƒã‚¯ã‚‚è¡Œã†
 		return FALSE;
 //fprintf(stderr,"dst*[%s]\n",s);
 	return mole_dir(s);
@@ -1084,7 +1084,7 @@ void	fw_copy(fw_t *srcfwp,fw_t *dstfwp)
 	if (!fw_cpdest(buf,srcfwp,dstfwp))
 		return;
 
-	fw_fop(srcfwp, buf, "Ê£¼Ì", cp_proc_file, cp_proc_dir);
+	fw_fop(srcfwp, buf, "è¤‡å†™", cp_proc_file, cp_proc_dir);
 	if (dstfwp!=NULL)
 		fw_make(dstfwp);
 }
@@ -1096,7 +1096,7 @@ void	fw_move(fw_t *srcfwp,fw_t *dstfwp)
 	if (!fw_cpdest(buf,srcfwp,dstfwp))
 		return;
 
-	fw_fop(srcfwp, buf, "°ÜÆ°", mv_proc_file, mv_proc_dir);
+	fw_fop(srcfwp, buf, "ç§»å‹•", mv_proc_file, mv_proc_dir);
 	fw_make(srcfwp);
 
 	if (dstfwp!=NULL)
@@ -1105,10 +1105,10 @@ void	fw_move(fw_t *srcfwp,fw_t *dstfwp)
 
 void	fw_remove(fw_t *srcfwp,fw_t *dstfwp)
 {
-	if (keysel_ynq("ºï½ü¤·¤Ş¤¹¡£¤è¤í¤·¤¤¤Ç¤·¤ç¤¦¤«¡©")!=TRUE)
+	if (keysel_ynq("å‰Šé™¤ã—ã¾ã™ã€‚ã‚ˆã‚ã—ã„ã§ã—ã‚‡ã†ã‹ï¼Ÿ")!=TRUE)
 		return;
 
-	fw_fop(srcfwp, NULL,"ºï½ü", rm_proc_file, rm_proc_dir);
+	fw_fop(srcfwp, NULL,"å‰Šé™¤", rm_proc_file, rm_proc_dir);
 	fw_make(srcfwp);
 }
 

@@ -19,12 +19,12 @@ static	void	cursor_move(int lx,long ly)	// !!
 }
 
 
-// multi search/replaceÍÑ¥Ğ¥Ã¥Õ¥¡
+// multi search/replaceç”¨ãƒãƒƒãƒ•ã‚¡
 	char	s_search[MAXEDITLINE+1];	/* search strings */
 	char	s_repl[MAXEDITLINE+1];		/* replace strings */
 
 //
-	char	s_get[MAXEDITLINE+1];	/* Ê¸»úÎó¼èÆÀ¥Ğ¥Ã¥Õ¥¡ */
+	char	s_get[MAXEDITLINE+1];	/* æ–‡å­—åˆ—å–å¾—ãƒãƒƒãƒ•ã‚¡ */
 
 void	search_init()
 {
@@ -253,7 +253,7 @@ static	void	replace()
 		 	 buf[rm.rm_eo-rm.rm_so]='\0';
 		 	 term_puts(buf);
 
-		 	 c=keysel("ÃÖ´¹¤·¤Ş¤¹¤«? (Y/N/A) :","Yy\r\nNnAa \x1b");
+		 	 c=keysel("ç½®æ›ã—ã¾ã™ã‹? (Y/N/A) :","Yy\r\nNnAa \x1b");
 		 	 if (c=='\x1b')
 		 	 	break;
 		 	 if (c=='n'||c==' ')
@@ -275,7 +275,7 @@ static	void	replace()
 
 		 ++chgNo;
 		}
-// ÊÑ´¹¤ò³«»Ï¤·¤¿»ş¤Î¥«¡¼¥½¥ë°ÌÃÖ¤ËÌá¤¹¡£
+// å¤‰æ›ã‚’é–‹å§‹ã—ãŸæ™‚ã®ã‚«ãƒ¼ã‚½ãƒ«ä½ç½®ã«æˆ»ã™ã€‚
 	csrle.cx=cx;
 	csrle.sx=sx;
 	csrle.lx=lx;

@@ -51,7 +51,7 @@ extern	void	term_report();
 extern	char	*term_getent(const char *s_id,const char *s_def);
 
 
-extern	void	term_kflush();		/* ÆşÎÏ¥Õ¥é¥Ã¥·¥å */
+extern	void	term_kflush();		/* å…¥åŠ›ãƒ•ãƒ©ãƒƒã‚·ãƒ¥ */
 
 extern	int 	term_kbhit(u_long usec);
 extern	int 	term_getch();

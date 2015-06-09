@@ -184,7 +184,7 @@ failed:
 		 p= GetLast();
 
 		 if (p==NULL)
-		 	goto failed; // ¤¢¤Ã¤Æ¤Ï¤Ê¤é¤Ê¤¤¡£
+		 	goto failed; // ã‚ã£ã¦ã¯ãªã‚‰ãªã„ã€‚
 
 		 while(p->prev!=NULL&& num-- >o_number)
 		 	p=p->prev;
@@ -195,7 +195,7 @@ failed:
 	p = csrse.ed;
 
 	if (p==NULL)
-		goto failed; // ¤ª¤³¤é¤Ê¤¤¤Ï¤º¡£
+		goto failed; // ãŠã“ã‚‰ãªã„ã¯ãšã€‚
 
 	if (off < 0)
 		{
@@ -295,7 +295,7 @@ void	lists_delete(int n_st,int n_ed)
 	ed = GetList(n_st);
 	while (n-- >0)
 		{
-		 if (n_st > GetLastNumber()) // GetLastNumber ¤Ï°ÜÆ°¤¹¤ë¡£
+		 if (n_st > GetLastNumber()) // GetLastNumber ã¯ç§»å‹•ã™ã‚‹ã€‚
 		 	{
 		 	 Realloc(ed, "");
 		 	 return;

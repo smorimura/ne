@@ -102,7 +102,7 @@
 
 #endif
 
-#error	"SGTTY Åù¤òÄêµÁ¤·¤Æ²¼¤µ¤¤¡£"
+#error	"SGTTY ç­‰ã‚’å®šç¾©ã—ã¦ä¸‹ã•ã„ã€‚"
 
 #endif
 
@@ -411,7 +411,7 @@ static	int 	term_getmode()
 
 
 
-void	term_stop()	/* atexit¤µ¤ì¤ë¤Î¤Ç´ğËÜÅª¤Ë¤ÏÌÀ¼¨Åª¤Ë¸Æ¤ÖÉ¬Í×¤Ï¤Ê¤¤ */
+void	term_stop()	/* atexitã•ã‚Œã‚‹ã®ã§åŸºæœ¬çš„ã«ã¯æ˜ç¤ºçš„ã«å‘¼ã¶å¿…è¦ã¯ãªã„ */
 {
 	if (exit_failed)
 		return;
@@ -495,7 +495,7 @@ void	term_init()
 		 if (!tgetflag("am"))
 		 	term.sizex--;
 
-		 PC=*term_getent("pc", ""); //!! ÌÌÅİ¤Ê¤Î¤ÇFree¤·¤Æ¤¤¤Ê¤¤
+		 PC=*term_getent("pc", ""); //!! é¢å€’ãªã®ã§Freeã—ã¦ã„ãªã„
 		 BC=term_getent("bc", "\010");
 		 UP=term_getent("up", "\033[A");
 //		 ospeed = term_getspeed();
@@ -526,10 +526,10 @@ void	term_report()
 {
 	extern	void	term_keyreport();
 
-	report_puts("Ã¼Ëö¾ğÊó:\n");
+	report_puts("ç«¯æœ«æƒ…å ±:\n");
 	report_printf("  x = %d, y = %d\n", term.sizex, term.sizey);
 
-	report_puts("É½¼¨¥·¡¼¥±¥ó¥¹:\n");
+	report_puts("è¡¨ç¤ºã‚·ãƒ¼ã‚±ãƒ³ã‚¹:\n");
 
 	report_printf("  term.t_init = %s\n", term.t_init);
 	report_printf("  term.t_end = %s\n", term.t_end);
@@ -772,7 +772,7 @@ static	int 	nbytes(int c)
 	if (c==0)
 		return 0;
 
-	if ((c&0xff)==0x8e)	// È¾³Ñ¤«¤Ê
+	if ((c&0xff)==0x8e)	// åŠè§’ã‹ãª
 		return 2;
 
 	if ((c&0xff)==0x8f)
@@ -799,7 +799,7 @@ void	term_puts(const char *s)
 
 	while (*s!='\0' && term.x <term.sizex)
 		{
-// ctl code ½èÍı??
+// ctl code å‡¦ç†??
 
 		 if (nbytes(*s)==1)
 		 	term.scr[term.y][term.x]= SCR_code(term.cl, *s&0xff); else

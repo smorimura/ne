@@ -9,7 +9,7 @@
 #include <ctype.h>
 
 
-/* ¿··¿lineedit½èÍı·Ï */
+/* æ–°å‹lineeditå‡¦ç†ç³» */
 int 	le_getcsx(le_t *lep)
 {
 	int 	csx,i;
@@ -38,10 +38,10 @@ void	le_setlx(le_t *lep,int lx)
 	if (csx==lep->cx+ lep->sx)
 		return;
 
-	if (csx<=lep->sx)		// ¥¹¥¯¥í¡¼¥ë°ÌÃÖ¤è¤êº¸¤Ë
+	if (csx<=lep->sx)		// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚ˆã‚Šå·¦ã«
 		lep->sx=(csx-1)/N_scr*N_scr; else
 		{
-		 if (csx>=lep->sx+lep->dsize-1)	// ¥¹¥¯¥í¡¼¥ë°ÌÃÖ¤è¤ê±¦¤Ë
+		 if (csx>=lep->sx+lep->dsize-1)	// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚ˆã‚Šå³ã«
 		 	lep->sx=((csx- lep->dsize)/N_scr+1)*N_scr;
 		}
 	lep->cx=csx- lep->sx;
@@ -166,7 +166,7 @@ size_t	le_regbuf(const char *s,char *t)
 }
 
 
-	/* legets ½èÍı·Ï */
+	/* legets å‡¦ç†ç³» */
 
 static	void	legets_hist(le_t *lep,int hn,int hy)
 {
@@ -226,7 +226,7 @@ static	bool	legets_histnext(le_t *lep,int hn,int *hy)
 	return TRUE;
 }
 
-le_t	*legets_lep;	// !!»ÃÄêÅª
+le_t	*legets_lep;	// !!æš«å®šçš„
 
 static	dspfmt_t	*dspreg_legets(void *vp,int a,int sizex,int sizey)
 {

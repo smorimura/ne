@@ -165,7 +165,7 @@ failed:
 		 	{
 			 if (edbuf[CurrentFileNo].ct==-1&&GetLastNumber()==1)
 			 	{
-			 	 sprintf(tmp,"profile: ¥Õ¥¡¥¤¥ë`%s'¤¬¼º¤ï¤ì¤Ş¤·¤¿¡£",p);
+			 	 sprintf(tmp,"profile: ãƒ•ã‚¡ã‚¤ãƒ«`%s'ãŒå¤±ã‚ã‚Œã¾ã—ãŸã€‚",p);
 				 inkey_wait(tmp);
 
 			 	 edbuf_rm(CurrentFileNo);

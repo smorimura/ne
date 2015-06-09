@@ -136,7 +136,7 @@ static	bool	bstack_copy()
 
 	if (bstack_nums>=MAX_bstack)
 		{
-		 if (!keysel_ynq("¥Ö¥í¥Ã¥¯¥Ğ¥Ã¥Õ¥¡¤¬°ìÇÕ¤Ç¤¹¡£ºï½ü¤·¤Ş¤¹¤«?"))
+		 if (!keysel_ynq("ãƒ–ãƒ­ãƒƒã‚¯ãƒãƒƒãƒ•ã‚¡ãŒä¸€æ¯ã§ã™ã€‚å‰Šé™¤ã—ã¾ã™ã‹?"))
 		 	return FALSE;
 		 bstack_clear();
 		}
@@ -219,7 +219,7 @@ SHELL	void	op_block_start()
 		}
 }
 
-static	bool	BlockCommand()		/* ¥Ö¥í¥Ã¥¯¥³¥Ş¥ó¥É¤Î½àÈ÷ÍÑ */
+static	bool	BlockCommand()		/* ãƒ–ãƒ­ãƒƒã‚¯ã‚³ãƒãƒ³ãƒ‰ã®æº–å‚™ç”¨ */
 {
 	csr_leupdate();
 
@@ -243,7 +243,7 @@ static	bool	BlockCommand()		/* ¥Ö¥í¥Ã¥¯¥³¥Ş¥ó¥É¤Î½àÈ÷ÍÑ */
 	return block_size(&bkm)>0;
 }
 
-SHELL	void	op_block_yanc()	/* ¥Ö¥í¥Ã¥¯¤ò¥³¥Ô¡¼¤¹¤ë¤Î¤ß¡£*/
+SHELL	void	op_block_yanc()	/* ãƒ–ãƒ­ãƒƒã‚¯ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹ã®ã¿ã€‚*/
 {
 	if (!BlockCommand())
 		return;
@@ -352,7 +352,7 @@ SHELL	void	op_block_dup()
 
 SHELL	void	op_block_kill()
 {
-	if (keysel_ynq("¥ä¥ó¥¯¥Ğ¥Ã¥Õ¥¡¤òºï½ü¤·¤Ş¤¹¡£"))
+	if (keysel_ynq("ãƒ¤ãƒ³ã‚¯ãƒãƒƒãƒ•ã‚¡ã‚’å‰Šé™¤ã—ã¾ã™ã€‚"))
 		bstack_clear();
 }
 
