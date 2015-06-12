@@ -1682,11 +1682,16 @@ int 	keysdef_getcode(const char *s, int k[], int num)
 		 if (*s=='\0')
 		 	break;
 
-		 if (*s!='[')
+		/*	if *s is not a '[', or a '[' without a ']', consume this character here.
+
+			strchr may be called twice if this condition is not met.
+			this should not cause any problems and I leave it for now.
+		*/
+		 if (*s!='[' || strchr(s, ']') == NULL)
 		 	{
-		 	 k[n]= k[n]==KS_ctrl? *s&0x1f: *s;
-		 	 ++s;
-		 	 continue;
+			 k[n]= k[n]==KS_ctrl? *s&0x1f: *s;
+			 ++s;
+			 continue;
 		 	}
 
 		 ++s;

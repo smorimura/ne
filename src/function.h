@@ -78,7 +78,8 @@ SHELL	void	op_search_prev();
 SHELL	void	op_search_next();
 SHELL	void	op_search_getword();
 SHELL	void	op_search_paging();
-
+SHELL	void	op_search_brace_prev();
+SHELL	void	op_search_brace_next();
 
   /* file command */
 SHELL	void	op_file_toggle();

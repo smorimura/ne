@@ -132,7 +132,8 @@ void	key_set()
 		 keyf_set(0, "^L",            "search_getword");
 		 keyf_set(0, "[F05]",         "search_getword");
 
-
+		 keyf_set(0, "^Q[",           "search_brace_prev");
+		 keyf_set(0, "^Q]",           "search_brace_next");
 
 		 keyf_set(0, "^_",            "misc_kmacro");
 		 keyf_set(0, "^V",            "opt_set OverWrite");
